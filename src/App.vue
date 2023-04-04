@@ -1,14 +1,10 @@
 <script setup>
 import TheHeader from "@/components/TheHeader.vue";
 import ProductCard from "@/components/ProductCard.vue";
-// import products from "@/data/products.json";
 import { useProductStore } from "./stores/ProductStore";
 
 const productStore = useProductStore();
-
-// Store state 디스트럭처링 방법
-// import { storeToRefs } from "pinia";
-// const { products } = storeToRefs(useProductStore());
+productStore.fill();
 </script>
 
 <template>
