@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { groupBy } from "lodash";
+import { useAuthUserStore } from "./AuthUserStore";
 
 export const useCartStore = defineStore("CartStore", {
   state: () => {
@@ -21,6 +22,12 @@ export const useCartStore = defineStore("CartStore", {
     total: (state) => state.items.reduce((acc, item) => acc + item.price, 0),
   },
   actions: {
+    checkout() {
+      const AuthUserStore = useAuthUserStore();
+      alert(
+        `${AuthUserStore.username}님 ${this.count} 개의 상품 합계는 $${this.total} 입니다.`
+      );
+    },
     addItems(count, item) {
       count = parseInt(count);
       for (let index = 0; index < count; index++) {
